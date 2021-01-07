@@ -25,7 +25,7 @@ finish-args:
   - '--talk-name=org.gnome.SessionManager'
   - '--system-talk-name=org.freedesktop.Avahi'
   - '--filesystem=xdg-run/pipewire-0'
-  - '--own-name=org.mpris.MediaPlayer2.chromium.*'
+  - '--own-name=org.mpris.MediaPlayer2.edge.*'
   - '--filesystem=xdg-download'
 modules:
   - shared-modules/libsecret/libsecret.json
@@ -76,7 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/refi64/zypak
-        tag: v2020.10beta.4
+        commit: 3f8407fd481034f142b3f182e85a78989bc02ce1
+        #tag: v2020.10beta.4
       - type: patch
         paths:
           - patches/01-msedge-sandbox.patch
@@ -106,8 +107,8 @@ modules:
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_89.0.731.0-1_amd64.deb
-        sha256: b1d64e9a837b021137db7f4a84e307f2f79b6b0d09cf26c40877a5a5d3066f86
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_89.0.752.1-1_amd64.deb
+        sha256: 36e2176029613c2e57b0ea6979cf53b21a0d6b3fcb0cf340f8f46484f0ae5cc3
         filename: edge.deb
         strip-components: 0
         x-checker-data:
@@ -116,7 +117,7 @@ modules:
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 89937570
+        size: 90487364
       - type: script
         dest-filename: stub_sandbox.sh
         commands:

@@ -25,7 +25,7 @@ finish-args:
   - '--talk-name=org.gnome.SessionManager'
   - '--system-talk-name=org.freedesktop.Avahi'
   - '--filesystem=xdg-run/pipewire-0'
-  - '--own-name=org.mpris.MediaPlayer2.chromium.*'
+  - '--own-name=org.mpris.MediaPlayer2.edge.*'
   - '--filesystem=xdg-download'
 modules:
   - shared-modules/libsecret/libsecret.json

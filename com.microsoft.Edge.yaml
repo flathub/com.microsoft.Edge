@@ -76,11 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/refi64/zypak
-        commit: 3f8407fd481034f142b3f182e85a78989bc02ce1
+        commit: c63a87a49898299bb803408eecffbcc1e44a65e6
         #tag: v2020.10beta.4
-      - type: patch
-        paths:
-          - patches/01-msedge-sandbox.patch
 
   - name: flextop
     buildsystem: meson

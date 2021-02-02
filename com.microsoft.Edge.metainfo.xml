@@ -28,6 +28,8 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="90.0.782.0" date="2021-02-02"/>
+    <release version="89.0.774.14" date="2021-02-02"/>
     <release version="89.0.774.8" date="2021-01-29"/>
     <release version="89.0.774.4" date="2021-01-27"/>
     <release version="89.0.767.0" date="2021-01-19"/>

@@ -69,7 +69,7 @@ modules:
       - -Dsystemd=false
     sources:
       - type: git
-        url: https://gitlab.freedesktop.org/pipewire/pipewire.git
+        url: https://github.com/PipeWire/pipewire.git
         tag: 0.2.7
 
   - name: zypak
@@ -103,8 +103,8 @@ modules:
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_89.0.774.8-1_amd64.deb
-        sha256: ea68141aa03e9d2eda8ef9c027f9c76cb813e1eac729c39d86ed5bff940e0fbb
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_90.0.782.0-1_amd64.deb
+        sha256: 78b2564273caff48873407da9a5850d423385f0447a4219a7b6ec20d8ea4a944
         filename: edge.deb
         strip-components: 0
         x-checker-data:
@@ -113,7 +113,7 @@ modules:
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 90894416
+        size: 92059528
       - type: script
         dest-filename: stub_sandbox.sh
         commands:

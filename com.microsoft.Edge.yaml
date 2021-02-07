@@ -9,24 +9,24 @@ build-options:
 tags:
   - proprietary
 finish-args:
-  - '--device=all'
-  - '--env=GTK_PATH=/app/lib/gtkmodules'
-  - '--share=ipc'
-  - '--share=network'
-  - '--socket=cups'
-  - '--socket=pulseaudio'
-  - '--socket=x11'
-  - '--socket=wayland'
-  - '--require-version=1.8.2'
-  - '--system-talk-name=org.freedesktop.UPower'
-  - '--talk-name=org.freedesktop.FileManager1'
-  - '--talk-name=org.freedesktop.Notifications'
-  - '--talk-name=org.freedesktop.secrets'
-  - '--talk-name=org.gnome.SessionManager'
-  - '--system-talk-name=org.freedesktop.Avahi'
-  - '--filesystem=xdg-run/pipewire-0'
-  - '--own-name=org.mpris.MediaPlayer2.edge.*'
-  - '--filesystem=xdg-download'
+  - --device=all
+  - --env=GTK_PATH=/app/lib/gtkmodules
+  - --share=ipc
+  - --share=network
+  - --socket=cups
+  - --socket=pulseaudio
+  - --socket=x11
+  - --socket=wayland
+  - --require-version=1.8.2
+  - --system-talk-name=org.freedesktop.UPower
+  - --talk-name=org.freedesktop.FileManager1
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.gnome.SessionManager
+  - --system-talk-name=org.freedesktop.Avahi
+  - --filesystem=xdg-run/pipewire-0
+  - --own-name=org.mpris.MediaPlayer2.edge.*
+  - --filesystem=xdg-download
 modules:
   - shared-modules/libsecret/libsecret.json
 
@@ -53,10 +53,11 @@ modules:
         url: https://gitlab.gnome.org/GNOME/gtk.git
         tag: 3.24.23
 
+        commit: 016e8c55ab924c9ef4d32c8cb06253b1dc1be60d
   - name: gtk-settings
     buildsystem: simple
     build-commands:
-      - 'install -Dm 644 gtk-settings.ini /app/etc/xdg/gtk-3.0/settings.ini'
+      - install -Dm 644 gtk-settings.ini /app/etc/xdg/gtk-3.0/settings.ini
     sources:
       - type: file
         path: gtk-settings.ini
@@ -72,12 +73,14 @@ modules:
         url: https://gitlab.freedesktop.org/pipewire/pipewire.git
         tag: 0.2.7
 
+        commit: 14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
   - name: zypak
     sources:
       - type: git
         url: https://github.com/refi64/zypak
         tag: v2021.01.1
 
+        commit: e16b0e37f94915707f03d6d2a827bec927b59d26
   - name: flextop
     buildsystem: meson
     sources:
@@ -88,18 +91,18 @@ modules:
   - name: edge
     buildsystem: simple
     build-commands:
-      - 'install -Dm 755 edge.sh /app/bin/edge'
-      - 'install -Dm 755 apply_extra.sh /app/bin/apply_extra'
-      - 'install -Dm 755 stub_sandbox.sh /app/bin/stub_sandbox'
-      - 'install -Dm 644 -t /app/share/flatpak-edge flatpak_policy.json'
-      - 'install -Dm 644 -t /app/share/flatpak-edge mimic_warning.txt'
-      - 'install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop'
-      - 'install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml'
-      - 'install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png'
+      - install -Dm 755 edge.sh /app/bin/edge
+      - install -Dm 755 apply_extra.sh /app/bin/apply_extra
+      - install -Dm 755 stub_sandbox.sh /app/bin/stub_sandbox
+      - install -Dm 644 -t /app/share/flatpak-edge flatpak_policy.json
+      - install -Dm 644 -t /app/share/flatpak-edge mimic_warning.txt
+      - install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop
+      - install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml
+      - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
 
       # For extra-data to be able to extract the .deb
-      - 'install -Dm 755 /{usr,app}/bin/ar'
-      - 'cp /usr/lib/$(gcc --print-multiarch)/libbfd-*.so /app/lib'
+      - install -Dm 755 /{usr,app}/bin/ar
+      - cp /usr/lib/$(gcc --print-multiarch)/libbfd-*.so /app/lib
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev
@@ -118,7 +121,7 @@ modules:
         dest-filename: stub_sandbox.sh
         commands:
           - 'echo "Stub sandbox ignoring command: $@"'
-          - 'exit 1'
+          - exit 1
       - type: file
         path: edge.sh
       - type: file

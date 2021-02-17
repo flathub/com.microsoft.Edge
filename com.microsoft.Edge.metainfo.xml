@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 the Chromium authors, with modifications -->
 <component type="desktop">
   <id>com.microsoft.Edge</id>
   <launchable type="desktop-id">com.microsoft.Edge.desktop</launchable>

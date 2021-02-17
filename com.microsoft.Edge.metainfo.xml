@@ -1,5 +1,5 @@
-<!-- Copyright 2017 the Chromium authors, with modifications -->
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 the Chromium authors, with modifications -->
 <component type="desktop">
   <id>com.microsoft.Edge</id>
   <launchable type="desktop-id">com.microsoft.Edge.desktop</launchable>
@@ -28,6 +28,7 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="90.0.796.0-1" date="2021-02-16"/>
     <release version="90.0.789.1" date="2021-02-09"/>
     <release version="90.0.782.0" date="2021-02-02"/>
     <release version="89.0.774.14" date="2021-02-02"/>

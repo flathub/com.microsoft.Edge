@@ -28,7 +28,7 @@ finish-args:
   - --own-name=org.mpris.MediaPlayer2.edge.*
   - --filesystem=xdg-download
 modules:
-  - shared-modules/libsecret/libsecret.json
+  - libsecret.json
 
   - name: libcups
     make-args: [libs]

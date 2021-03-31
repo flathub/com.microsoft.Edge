@@ -28,6 +28,7 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="91.0.838.3-1" date="2021-03-31"/>
     <release version="91.0.831.1-1" date="2021-03-23"/>
     <release version="91.0.825.0-1" date="2021-03-16"/>
     <release version="90.0.818.6-1" date="2021-03-12"/>

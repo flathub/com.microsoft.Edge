@@ -27,9 +27,9 @@ if [[ ! -f "$mimic_stamp" ]] && ! zypak-helper spawn-strategy-test; then
   touch "$mimic_stamp"
 fi
 
-if [[ -f "$XDG_CONFIG_HOME/chrome-flags.conf" ]]; then
+if [[ -f "$XDG_CONFIG_HOME/edge-flags.conf" ]]; then
   IFS=$'\n'
-  flags=($(grep -v '^#' "$XDG_CONFIG_HOME/chrome-flags.conf"))
+  flags=($(grep -v '^#' "$XDG_CONFIG_HOME/edge-flags.conf"))
   unset IFS
 
   set -- "${flags[@]}" "$@"

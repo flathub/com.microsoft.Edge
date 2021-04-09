@@ -1,6 +1,12 @@
 #!/usr/bin/sh
-ar x edge.deb data.tar.xz
+
+set -e
+
+bsdtar -Oxf edge.deb 'data.tar*' |
+  bsdtar -xf - \
+    --strip-components=4 \
+    --exclude='./opt/microsoft/msedge-dev/nacl*' \
+    ./opt/microsoft/msedge-dev
 rm edge.deb
-tar -xf data.tar.xz --strip-components=4 ./opt/microsoft/msedge-dev
-rm data.tar.xz nacl*
-cp /app/bin/stub_sandbox msedge-sandbox
+
+install -Dm755 /app/bin/stub_sandbox msedge-sandbox

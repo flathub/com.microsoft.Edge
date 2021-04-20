@@ -98,10 +98,6 @@ modules:
       - install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop
       - install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml
       - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
-
-      # For extra-data to be able to extract the .deb
-      - install -Dm 755 /{usr,app}/bin/ar
-      - cp /usr/lib/$(gcc --print-multiarch)/libbfd-*.so /app/lib
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev

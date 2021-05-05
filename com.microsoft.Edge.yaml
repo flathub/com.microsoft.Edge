@@ -100,18 +100,18 @@ modules:
       - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
     sources:
       - type: extra-data
-        # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_92.0.873.1-1_amd64.deb
-        sha256: 4b21465a13739a4c3d7b06abe18e7aeeeea37c9c25a09a30e8455f85e587d0ff
+        # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_91.0.864.15-1_amd64.deb
+        sha256: a7f58618af76716c1ec87de6cb221b50c7d629c04d6f054e8124aa3195fb0755
         filename: edge.deb
         strip-components: 0
         x-checker-data:
           type: debian-repo
-          package-name: microsoft-edge-dev
+          package-name: microsoft-edge-beta
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 99826952
+        size: 99076612
       - type: script
         dest-filename: stub_sandbox.sh
         commands:

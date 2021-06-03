@@ -98,6 +98,8 @@ modules:
       - install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop
       - install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml
       - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
+      # workaround for broken 3d acceleration with ozone x11
+      - install -Dm 644 -t /app/etc ld.so.conf
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta
@@ -131,3 +133,5 @@ modules:
         path: com.microsoft.Edge.metainfo.xml
       - type: file
         path: icons/com.microsoft.Edge-256.png
+      - type: file
+        path: ld.so.conf

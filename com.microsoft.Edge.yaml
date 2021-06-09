@@ -106,7 +106,6 @@ modules:
         url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_92.0.902.9-1_amd64.deb
         sha256: fdd267418b93e0df9accbe1e8b8489f9b824f117edd7bd2ce22cf9a16b396acd
         filename: edge.deb
-        strip-components: 0
         x-checker-data:
           type: debian-repo
           package-name: microsoft-edge-beta

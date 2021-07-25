@@ -11,6 +11,7 @@ tags:
 finish-args:
   - --device=all
   - --env=GTK_PATH=/app/lib/gtkmodules
+  - --env=CHROME_VERSION_EXTRA=beta
   - --share=ipc
   - --share=network
   - --socket=cups
@@ -80,12 +81,31 @@ modules:
         url: https://github.com/refi64/zypak
         tag: v2021.06
         commit: 89dd114427a114028f249ed9b2824d083f459eb5
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
   - name: flextop
     buildsystem: meson
     sources:
       - type: git
         url: https://github.com/refi64/flextop
-        commit: 485c332c7ec36a8b74be8f3622fc756ac6263f40
+        tag: v2021.07.1
+        commit: 9f66dac84388f520ecab5ac4fa60df6343b7db5b
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: cobalt
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/refi64/cobalt
+        tag: v2021.07.2
+        commit: 2ef67dc9df354a5714944757e41360ec4e2cd14a
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
 
   - name: edge
     buildsystem: simple
@@ -93,8 +113,8 @@ modules:
       - install -Dm 755 edge.sh /app/bin/edge
       - install -Dm 755 apply_extra.sh /app/bin/apply_extra
       - install -Dm 755 stub_sandbox.sh /app/bin/stub_sandbox
+      - install -Dm 644 -t /app/etc cobalt.ini
       - install -Dm 644 -t /app/share/flatpak-edge flatpak_policy.json
-      - install -Dm 644 -t /app/share/flatpak-edge mimic_warning.txt
       - install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop
       - install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml
       - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
@@ -118,14 +138,16 @@ modules:
         commands:
           - 'echo "Stub sandbox ignoring command: $@"'
           - exit 1
+      - type: script
+        dest-filename: edge.sh
+        commands:
+          - exec cobalt "$@"
       - type: file
-        path: edge.sh
+        path: cobalt.ini
       - type: file
         path: apply_extra.sh
       - type: file
         path: flatpak_policy.json
-      - type: file
-        path: mimic_warning.txt
       - type: file
         path: com.microsoft.Edge.desktop
       - type: file

@@ -86,7 +86,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/refi64/flextop
-        commit: 485c332c7ec36a8b74be8f3622fc756ac6263f40
+        commit: 9f66dac84388f520ecab5ac4fa60df6343b7db5b
 
   - name: cobalt
     buildsystem: meson

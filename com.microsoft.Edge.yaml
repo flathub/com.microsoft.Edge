@@ -28,6 +28,7 @@ finish-args:
   - --filesystem=xdg-run/pipewire-0
   - --own-name=org.mpris.MediaPlayer2.edge.*
   - --filesystem=xdg-download
+  - --persist=.pki
 modules:
   - libsecret.json
 

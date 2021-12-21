@@ -24,6 +24,7 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.gnome.SessionManager
+  - --talk-name=com.canonical.AppMenu.Registrar
   - --system-talk-name=org.freedesktop.Avahi
   - --filesystem=xdg-run/pipewire-0
   - --own-name=org.mpris.MediaPlayer2.edge.*
@@ -66,7 +67,6 @@ modules:
       - type: file
         path: gtk-settings.ini
 
-        commit: 14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
   - name: zypak
     sources:
       - type: git

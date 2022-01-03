@@ -45,7 +45,7 @@ modules:
         url: https://github.com/OpenPrinting/cups.git
         tag: v2.3.3op2
         commit: 3b566f73587ffa8ad9690f2399efc4508b3a9016
-  - name: gtk-cups-backend
+  - name: gtk3-cups-backend
     buildsystem: meson
     make-args: [modules/printbackends/libprintbackend-cups.so]
     no-make-install: true
@@ -59,10 +59,14 @@ modules:
        # From https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/master/files/gtk3-werror.patch
       - type: patch
         path: gtk3-werror.patch
+
+  - gtkimm/gtkimm.yaml
+
   - name: gtk-settings
     buildsystem: simple
     build-commands:
       - install -Dm 644 gtk-settings.ini /app/etc/xdg/gtk-3.0/settings.ini
+      - install -Dm 644 gtk-settings.ini /app/etc/xdg/gtk-4.0/settings.ini
     sources:
       - type: file
         path: gtk-settings.ini

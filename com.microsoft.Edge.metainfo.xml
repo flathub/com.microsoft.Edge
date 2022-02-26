@@ -28,6 +28,7 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="99.0.1150.25-1" date="2022-02-26"/>
     <release version="99.0.1150.21-1" date="2022-02-22"/>
     <release version="99.0.1150.16-1" date="2022-02-14"/>
     <release version="99.0.1150.11-1" date="2022-02-09"/>

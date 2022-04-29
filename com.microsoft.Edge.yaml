@@ -13,7 +13,7 @@ tags:
 finish-args:
   - --device=all
   - --env=GTK_PATH=/app/lib/gtkmodules
-  - --env=CHROME_VERSION_EXTRA=beta
+  - --env=CHROME_VERSION_EXTRA=stable
   - --share=ipc
   - --share=network
   - --socket=cups
@@ -84,17 +84,17 @@ modules:
       - install -Dm 644 -t /app/etc ld.so.conf
     sources:
       - type: extra-data
-        # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_101.0.1210.31-1_amd64.deb
-        sha256: 89a8b1dfd4050f2444935a1b94d8159c6ac0f65a9a7d4f2e77639306263c8738
+        # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_101.0.1210.32-1_amd64.deb
+        sha256: 4e4438085586bc51d8f0e6f7a1cf8ea94e6557133a784cd7fe3a7548b39177f9
         filename: edge.deb
         x-checker-data:
           type: debian-repo
-          package-name: microsoft-edge-beta
+          package-name: microsoft-edge-stable
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 119499780
+        size: 119486916
       - type: script
         dest-filename: stub_sandbox.sh
         commands:

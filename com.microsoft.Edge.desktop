@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Microsoft Edge (beta)
+Name=Microsoft Edge
 # Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
 # From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
 GenericName=Web Browser
@@ -109,7 +109,7 @@ Exec=/app/bin/edge %U
 StartupNotify=true
 Terminal=false
 Icon=com.microsoft.Edge
-StartupWMClass=microsoft-edge-beta
+StartupWMClass=microsoft-edge-stable
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;

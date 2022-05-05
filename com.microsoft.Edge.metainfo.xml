@@ -11,6 +11,9 @@
   <url type="homepage">https://www.microsoft.com/en-us/edge/</url>
   <description>
     <p>
+    NOTE: This wrapper is not verified by, affiliated with, or supported by Microsoft.
+    </p>
+    <p>
     Browse the web anywhere with one seamless experience from your phone to your computer and other signed-in devices.
    </p>
     Microsoft Edge gives you the tools to protect your privacy online with features like tracking prevention, AdBlock Plus, InPrivate browsing and InPrivate search in Microsoft Bing.
@@ -20,7 +23,6 @@
     <p>
     With world class compatibility, performance, and new features, Microsoft Edge is the only web browser you’ll ever need.
    </p>
-   <p>NOTE: This wrapper is not verified by, affiliated with, or supported by Microsoft.</p>
   </description>
   <screenshots>
     <screenshot type="default">

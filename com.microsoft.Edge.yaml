@@ -1,9 +1,9 @@
 app-id: com.microsoft.Edge
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 base: org.chromium.Chromium.BaseApp
-base-version: '21.08'
+base-version: '22.08'
 command: edge
 separate-locales: false
 build-options:

@@ -30,6 +30,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="106.0.1370.52-1" date="2022-10-20"/>
+    <release version="106.0.1370.47-1" date="2022-10-14"/>
+    <release version="106.0.1370.42-1" date="2022-10-10"/>
+    <release version="106.0.1370.37-1" date="2022-10-06"/>
+    <release version="106.0.1370.34-1" date="2022-10-03"/>
+    <release version="105.0.1343.53-1" date="2022-09-26"/>
+    <release version="105.0.1343.50-1" date="2022-09-22"/>
+    <release version="105.0.1343.42-1" date="2022-09-15"/>
     <release version="105.0.1343.33-1" date="2022-09-08"/>
     <release version="105.0.1343.27-1" date="2022-09-02"/>
     <release version="105.0.1343.25-1" date="2022-09-01"/>

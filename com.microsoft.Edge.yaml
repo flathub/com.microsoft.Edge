@@ -84,7 +84,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/LudovicRousseau/PCSC/archive/refs/tags/1.9.9.tar.gz
-        sha256: e95ef03ca2d665f2a96fc5ddf142f3c621e5206441860a0f8bb378a7e5671cd0
+        sha256: 856a1daed9a5ae1ac265c75ce9f81743e66a972e5be5a1d3a2196ed23f75ea26
 
   - name: opensc
     cleanup:

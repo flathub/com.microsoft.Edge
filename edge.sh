@@ -18,4 +18,15 @@ for policy_type in managed recommended enrollment; do
   fi
 done
 
+# Add opensc lib to nss pkcs11.txt file
+pkcs11_txt="${HOME}/.pki/nssdb/pkcs11.txt"
+
+if [[ -e "${pkcs11_txt}" ]] && ! grep -qF opensc-pkcs11.so "${pkcs11_txt}"; then
+  [[ $(tail -n 1 "${pkcs11_txt}") == '' ]] || echo >> "${pkcs11_txt}"
+  cat >> "${pkcs11_txt}" << _EOF
+library=/app/lib/onepin-opensc-pkcs11.so
+name=opensc
+_EOF
+fi
+
 exec cobalt "$@"

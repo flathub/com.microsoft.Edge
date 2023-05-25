@@ -70,6 +70,30 @@ modules:
       - type: patch
         path: dconf-override.patch
 
+  - name: pcsc-lite
+    config-opts:
+      - --disable-libudev
+      - --disable-libsystemd
+      - --without-systemdsystemunitdir
+      - --disable-serial
+      - --disable-usb
+      - --disable-documentation
+    post-install:
+      - rm /app/sbin/pcscd
+      - rmdir /app/sbin || true
+    sources:
+      - type: archive
+        url: https://github.com/LudovicRousseau/PCSC/archive/refs/tags/1.9.9.tar.gz
+        sha256: 856a1daed9a5ae1ac265c75ce9f81743e66a972e5be5a1d3a2196ed23f75ea26
+
+  - name: opensc
+    cleanup:
+      - /share/applications/org.opensc.notify.desktop
+    sources:
+      - type: archive
+        url: https://github.com/OpenSC/OpenSC/releases/download/0.23.0/opensc-0.23.0.tar.gz
+        sha256: a4844a6ea03a522ecf35e49659716dacb6be03f7c010a1a583aaf3eb915ed2e0
+
   - name: zypak
     sources:
       - type: git

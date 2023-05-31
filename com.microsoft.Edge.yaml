@@ -96,8 +96,8 @@ modules:
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_114.0.1823.30-1_amd64.deb
-        sha256: 96a0b53bfcdee7c1a7319c342e41896eac2b7b64cc1a549f7253dcaa8c19e749
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_114.0.1823.35-1_amd64.deb
+        sha256: e4e39f6de5f527f892180324180fee38d32ed928bffc694863124b7eaa8001de
         filename: edge.deb
         x-checker-data:
           type: debian-repo
@@ -105,7 +105,7 @@ modules:
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 147267058
+        size: 147285226
       - type: script
         dest-filename: stub_sandbox.sh
         commands:

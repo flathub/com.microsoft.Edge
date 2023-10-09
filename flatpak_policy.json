@@ -1,4 +1,5 @@
 {
   "DefaultBrowserSettingEnabled": false,
-  "SmartScreenEnabled": false
+  "SmartScreenEnabled": false,
+  "DnsOverHttpsMode": "automatic"
 }

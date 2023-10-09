@@ -31,6 +31,7 @@ finish-args:
   - --talk-name=org.gnome.SessionManager
   - --talk-name=org.gnome.Mutter.IdleMonitor.*
   - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=com.microsoft.identity.broker1
   - --system-talk-name=org.freedesktop.Avahi
   - --filesystem=/run/.heim_org.h5l.kcm-socket
   - --filesystem=host-etc

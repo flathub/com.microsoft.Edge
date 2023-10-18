@@ -22,7 +22,9 @@ finish-args:
   - --socket=x11
   - --socket=wayland
   - --require-version=1.8.2
+  - --system-talk-name=org.bluez
   - --system-talk-name=org.freedesktop.UPower
+  - --system-talk-name=org.freedesktop.Avahi
   - --talk-name=org.freedesktop.FileManager1
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.ScreenSaver
@@ -32,19 +34,27 @@ finish-args:
   - --talk-name=org.gnome.Mutter.IdleMonitor.*
   - --talk-name=com.canonical.AppMenu.Registrar
   - --talk-name=com.microsoft.identity.broker1
-  - --system-talk-name=org.freedesktop.Avahi
+  - --own-name=org.mpris.MediaPlayer2.edge.*
   - --filesystem=/run/.heim_org.h5l.kcm-socket
   - --filesystem=host-etc
   - --filesystem=home/.local/share/applications:create
   - --filesystem=home/.local/share/icons:create
   - --filesystem=xdg-run/pipewire-0
-  - --own-name=org.mpris.MediaPlayer2.edge.*
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-music
   - --filesystem=xdg-videos
-  - --filesystem=xdg-desktop
+  - --filesystem=xdg-pictures
   - --persist=.pki
+  # For GNOME proxy resolution
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  - --talk-name=ca.desrt.dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+  - --env=GIO_EXTRA_MODULES=/app/lib/gio/modules
+  - --env=GSETTINGS_BACKEND=dconf
+  # For KDE proxy resolution (KDE5 only)
+  - --filesystem=~/.config/kioslaverc
 modules:
   - name: dconf
     buildsystem: meson

@@ -5,7 +5,7 @@
   <launchable type="desktop-id">com.microsoft.Edge.desktop</launchable>
   <name>Microsoft Edge</name>
   <developer_name>Microsoft Corporation</developer_name>
-  <summary>Introducing the new Microsoft Edge web browser. It’s time to expect more. More privacy. More control. More productivity. More value.</summary>
+  <summary>The web browser from Microsoft</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LicenseRef-proprietary</project_license>
   <url type="homepage">https://www.microsoft.com/en-us/edge/</url>

@@ -8,8 +8,8 @@ for policy_type in managed recommended enrollment; do
   mkdir -p "$policy_dir"
 
   if [[ -d "/run/host/$policy_root/$policy_type" ]]; then
-    find "/run/host/$policy_root/$policy_type" -type f -name '*' \
-      -maxdepth 1 -name '*.json' -type f \
+    find "/run/host/$policy_root/$policy_type" -maxdepth 1 \
+      -type f -name '*' -name '*.json' -type f \
       -exec ln -sf '{}' "$policy_root/$policy_type" \;
   fi
 done

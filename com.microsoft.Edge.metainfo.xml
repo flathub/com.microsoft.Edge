@@ -30,8 +30,11 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="131.0.2903.48-1" date="2024-11-14">
+    <release version="131.0.2903.51-1" date="2024-11-15">
       <description></description>
+    </release>
+    <release version="131.0.2903.48-1" date="2024-11-14">
+      <description/>
     </release>
     <release version="131.0.2903.45-1" date="2024-11-13">
       <description/>

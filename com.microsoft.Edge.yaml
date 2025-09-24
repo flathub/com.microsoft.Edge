@@ -1,7 +1,9 @@
 app-id: com.microsoft.Edge
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
+base: org.chromium.Chromium.BaseApp
+base-version: '25.08'
 command: edge
 separate-locales: false
 build-options:
@@ -15,86 +17,76 @@ finish-args:
   - --share=ipc
   - --share=network
   - --socket=cups
+  - --socket=pcsc # FIDO2
   - --socket=pulseaudio
   - --socket=fallback-x11
   - --socket=wayland
   - --require-version=1.8.2
+  - --system-talk-name=org.bluez
   - --system-talk-name=org.freedesktop.UPower
+  - --system-talk-name=org.freedesktop.Avahi
   - --talk-name=org.freedesktop.FileManager1
   - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.kwalletd5
   - --talk-name=org.gnome.SessionManager
+  - --talk-name=org.gnome.Mutter.IdleMonitor.*
   - --talk-name=com.canonical.AppMenu.Registrar
-  - --system-talk-name=org.freedesktop.Avahi
-  - --filesystem=xdg-run/pipewire-0
+  - --talk-name=com.microsoft.identity.broker1
   - --own-name=org.mpris.MediaPlayer2.edge.*
+  - --filesystem=/run/.heim_org.h5l.kcm-socket
+  - --filesystem=host-etc
+  - --filesystem=home/.local/share/applications:create
+  - --filesystem=home/.local/share/icons:create
+  - --filesystem=xdg-run/pipewire-0
+  - --filesystem=xdg-documents
   - --filesystem=xdg-download
+  - --filesystem=xdg-music
+  - --filesystem=xdg-videos
+  - --filesystem=xdg-pictures
   - --persist=.pki
+  # For GNOME proxy resolution
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  - --talk-name=ca.desrt.dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+  - --env=GIO_EXTRA_MODULES=/app/lib/gio/modules
+  - --env=GSETTINGS_BACKEND=dconf
+  # For KDE proxy resolution (KDE5 only)
+  - --filesystem=~/.config/kioslaverc
 modules:
-  - libsecret.json
-
-  - name: libcups
-    make-args: [libs]
-    no-make-install: true
-    post-install:
-      - make install-headers install-libs
-    cleanup:
-      - /include
-    sources:
-      - type: git
-        url: https://github.com/OpenPrinting/cups.git
-        tag: v2.3.3op2
-        commit: 3b566f73587ffa8ad9690f2399efc4508b3a9016
-  - name: gtk-cups-backend
+  - name: dconf
     buildsystem: meson
-    make-args: [modules/printbackends/libprintbackend-cups.so]
-    no-make-install: true
-    post-install:
-      - install -Dm 755 modules/printbackends/libprintbackend-cups.so -t /app/lib/gtkmodules/3.0.0/printbackends/
+    config-opts:
+      - -Dbash_completion=false
+      - -Dman=false
+      - -Dvapi=false
+    cleanup:
+      - /etc
+      - /include
+      - ca.desrt.dconf.service
+      - dconf.service
+      - dconf-service
+      - '*.pc'
     sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/gtk.git
-        tag: 3.24.23
-        commit: 016e8c55ab924c9ef4d32c8cb06253b1dc1be60d
-       # From https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/master/files/gtk3-werror.patch
+      - type: archive
+        url: https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz
+        sha256: 16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36
+        x-checker-data:
+          type: gnome
+          name: dconf
+          stable-only: true
+      # From: https://src.fedoraproject.org/rpms/dconf
       - type: patch
-        path: gtk3-werror.patch
-  - name: gtk-settings
-    buildsystem: simple
-    build-commands:
-      - install -Dm 644 gtk-settings.ini /app/etc/xdg/gtk-3.0/settings.ini
-    sources:
-      - type: file
-        path: gtk-settings.ini
+        path: dconf-override.patch
 
   - name: zypak
     sources:
       - type: git
         url: https://github.com/refi64/zypak
-        tag: v2021.09.1
-        commit: e09f37ca4ff09827434deba11f9b1f9e1c42dbaf
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-
-  - name: flextop
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/refi64/flextop
-        tag: v2021.07.1
-        commit: 9f66dac84388f520ecab5ac4fa60df6343b7db5b
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-
-  - name: cobalt
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/refi64/cobalt
-        tag: v2021.11.1
-        commit: 8a49246a97fcb989b370c20b204324862d79541f
+        tag: v2025.09
+        commit: 693a71c5ffa80ec9c9ce2ae03b1ccc493c698e53
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -106,7 +98,6 @@ modules:
       - install -Dm 755 apply_extra.sh /app/bin/apply_extra
       - install -Dm 755 stub_sandbox.sh /app/bin/stub_sandbox
       - install -Dm 644 -t /app/etc cobalt.ini
-      - install -Dm 644 -t /app/share/flatpak-edge flatpak_policy.json
       - install -Dm 644 -t /app/share/applications com.microsoft.Edge.desktop
       - install -Dm 644 -t /app/share/metainfo com.microsoft.Edge.metainfo.xml
       - install -Dm 644 com.microsoft.Edge-256.png /app/share/icons/hicolor/256x256/apps/com.microsoft.Edge.png
@@ -115,8 +106,8 @@ modules:
     sources:
       - type: extra-data
         # From https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta
-        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_98.0.1108.23-1_amd64.deb
-        sha256: 38a837c1d3871e9477af3e306a7197d8c8100b7017720f008db85d389d5de67f
+        url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_141.0.3537.38-1_amd64.deb
+        sha256: 67faa406cad6895134c76d2305a08b6bfbc0b1f4ac383fe28adfad7cc80d26c2
         filename: edge.deb
         x-checker-data:
           type: debian-repo
@@ -124,22 +115,18 @@ modules:
           root: https://packages.microsoft.com/repos/edge
           dist: stable
           component: main
-        size: 124526488
+        size: 180675642
       - type: script
         dest-filename: stub_sandbox.sh
         commands:
           - 'echo "Stub sandbox ignoring command: $@"'
           - exit 1
-      - type: script
-        dest-filename: edge.sh
-        commands:
-          - exec cobalt "$@"
+      - type: file
+        path: edge.sh
       - type: file
         path: cobalt.ini
       - type: file
         path: apply_extra.sh
-      - type: file
-        path: flatpak_policy.json
       - type: file
         path: com.microsoft.Edge.desktop
       - type: file

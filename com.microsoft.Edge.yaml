@@ -56,6 +56,27 @@ finish-args:
   # For KDE proxy resolution (KDE5 only)
   - --filesystem=~/.config/kioslaverc
 modules:
+  - name: libxml2-2.13
+    buildsystem: autotools
+    config-opts:
+      - --without-python
+      - --without-debug
+      - --without-history
+    cleanup:
+      - /share
+      - /include
+      - /bin
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libxml2/2.13/libxml2-2.13.9.tar.xz
+        sha256: a2c9ae7b770da34860050c309f903221c67830c86e4a7e760692b803df95143a
+        x-checker-data:
+          type: gnome
+          name: libxml2
+          stable-only: true
+          versions:
+            <: '2.14'
+
   - name: dconf
     buildsystem: meson
     config-opts:
@@ -65,6 +86,7 @@ modules:
     cleanup:
       - /etc
       - /include
+      - /share
       - ca.desrt.dconf.service
       - dconf.service
       - dconf-service
